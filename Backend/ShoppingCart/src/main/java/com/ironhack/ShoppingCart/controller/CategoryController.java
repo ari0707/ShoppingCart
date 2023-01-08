@@ -22,6 +22,11 @@ public class CategoryController {
 
     @GetMapping("/list")
     public List<Category> getAllCategory(){
+
         return categoryService.getAllCategory();
     }
+//    @PostMapping("/update/{categoryId}")
+//    public String updateCategory(@PathVariable("categoryId") int categoryId, @RequestBody Category category){
+//        return "testing";
+//    }
 }
