@@ -5,10 +5,13 @@ import com.ironhack.ShoppingCart.model.Category;
 import com.ironhack.ShoppingCart.model.Product;
 import com.ironhack.ShoppingCart.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -43,5 +46,13 @@ public class ProductService {
             productDTOList.add(getProductDto(product));
         }
         return productDTOList;
+    }
+
+    public Product findById(Integer productId) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if(optionalProduct.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, " Product id not valid" + productId);
+        }
+        return optionalProduct.get();
     }
 }

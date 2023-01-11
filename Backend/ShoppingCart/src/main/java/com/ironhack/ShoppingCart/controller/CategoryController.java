@@ -3,6 +3,7 @@ package com.ironhack.ShoppingCart.controller;
 import com.ironhack.ShoppingCart.model.Category;
 import com.ironhack.ShoppingCart.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,9 +16,10 @@ public class CategoryController {
     CategoryService categoryService;
 
     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     public String createCategory(@RequestBody Category category){
         categoryService.createCategory(category);
-        return "successfully created";
+        return (HttpStatus.CREATED + " Category has been added");
     }
 
     @GetMapping("/list")
@@ -25,8 +27,5 @@ public class CategoryController {
 
         return categoryService.getAllCategory();
     }
-//    @PostMapping("/update/{categoryId}")
-//    public String updateCategory(@PathVariable("categoryId") int categoryId, @RequestBody Category category){
-//        return "testing";
-//    }
+
 }

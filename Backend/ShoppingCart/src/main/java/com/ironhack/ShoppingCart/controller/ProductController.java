@@ -23,6 +23,7 @@ public class ProductController {
     CategoryRepository categoryRepository;
 
     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     public String createProduct(@RequestBody ProductDTO productDTO){
         Optional<Category> optionalCategory = categoryRepository.findById(productDTO.getCategoryId());
         if(!optionalCategory.isPresent()){
