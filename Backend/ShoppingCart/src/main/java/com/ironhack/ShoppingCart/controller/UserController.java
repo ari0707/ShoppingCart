@@ -4,10 +4,14 @@ import com.ironhack.ShoppingCart.dto.ResponseDTO;
 import com.ironhack.ShoppingCart.dto.SignInDTO;
 import com.ironhack.ShoppingCart.dto.SignInResponseDTO;
 import com.ironhack.ShoppingCart.dto.UserSignUpDTO;
+import com.ironhack.ShoppingCart.model.Category;
+import com.ironhack.ShoppingCart.model.User;
 import com.ironhack.ShoppingCart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/user")
